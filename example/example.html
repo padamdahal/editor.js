@@ -12,21 +12,13 @@
   <div class="ce-example">
     <div class="ce-example__content _ce-example__content--small">
       <div id="editorjs"></div>
-    </div><div id="saveButton">Save</div>
+	  <div id="saveButton">Save</div>
+    </div>
+	
     <div class="ce-example__output">
       <pre class="ce-example__output-content" id="output"></pre>
     </div>
   </div>
-
-  <!-- Load Tools -->
-  <!--
-   You can upload Tools to your project's directory and use as in example below.
-
-   Also you can load each Tool from CDN or use NPM/Yarn packages.
-
-   Read more in Tool's README file. For example:
-   https://github.com/editor-js/header#installation
-   -->
   <script src="https://cdn.jsdelivr.net/npm/@editorjs/header@latest"></script><!-- Header -->
   <script src="https://cdn.jsdelivr.net/npm/@editorjs/simple-image@latest"></script><!-- Image -->
   <script src="https://cdn.jsdelivr.net/npm/@editorjs/delimiter@latest"></script><!-- Delimiter -->
@@ -38,13 +30,15 @@
   <script src="https://cdn.jsdelivr.net/npm/@editorjs/table@latest"></script><!-- Table -->
   <script src="https://cdn.jsdelivr.net/npm/@editorjs/link@latest"></script><!-- Link -->
   <script src="https://cdn.jsdelivr.net/npm/@editorjs/warning@latest"></script><!-- Warning -->
-
   <script src="https://cdn.jsdelivr.net/npm/@editorjs/marker@latest"></script><!-- Marker -->
   <script src="https://cdn.jsdelivr.net/npm/@editorjs/inline-code@latest"></script><!-- Inline Code -->
 
   <!-- Load Editor.js's Core -->
   <script src="../dist/editor.js"></script>
-
+<script
+			  src="https://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			  crossorigin="anonymous"></script>
   <!-- Initialization -->
   <script>
     const saveButton = document.getElementById('saveButton');
@@ -65,12 +59,10 @@
 				inlineToolbar: true,
 				shortcut: 'CMD+SHIFT+L'
 			},
-
 			checklist: {
 				class: Checklist,
 				inlineToolbar: true,
 			},
-
 			quote: {
 				class: Quote,
 				inlineToolbar: true,
@@ -100,7 +92,7 @@
 				class: Table,
 				inlineToolbar: true,
 				shortcut: 'CMD+ALT+T'
-			},
+			}
 		},
 		/* Initial Editor data */
 		data: {
@@ -204,6 +196,17 @@
 		},
 		onReady: function(){
 			saveButton.click();
+			/*
+			var elements = $('*');
+			$.each(elements, function(i,el){
+				if($(el).attr('contenteditable') !== undefined && $(el).attr('contenteditable') != false){
+					$(el).attr('contenteditable',false);
+					$('.ce-toolbar__settings-btn').css('display','none');
+					$('.ce-toolbar__plus').css('display','none');
+					
+				}
+			});
+			*/
 		},
 		onChange: function() {
 			console.log('something changed');
